@@ -49,7 +49,7 @@ gulp.task('sass', function () {
   return gulp.src('./src/scss/**/*.scss')
     .pipe(sass({
       outputStyle: output_style
-    }))
+    }).on('error', gutil.log))
     .pipe(autoprefixer({browsers: [
     	'last 2 versions'
     ]}))

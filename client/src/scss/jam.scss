@@ -1,4 +1,7 @@
+@import "welcome";
+
 body {
+	font-family: 'Roboto', sans-serif;
     background-color: #000;
     background-image: url('/img/background-large.jpg');
     background-size: cover;
@@ -6,4 +9,36 @@ body {
     margin: 0;
     padding: 0;
     color: #fff;
+    font-size: 16px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	text-shadow: 1px 1px 4px rgba(0,0,0,0.3); 
+}
+h1 {
+	font-size: 3rem;
+}
+h2 {
+	font-size: 2.5rem;
+}
+h3 {
+	font-size: 2rem;
+}
+h4 {
+	font-size: 1.5rem;
+}
+h5 {
+	font-size: 1.25rem;
+}
+h6 {
+	font-size: 1rem;
+}
+
+ng-view {
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-around;
 }
