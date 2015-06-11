@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+  <title>Jam</title>
+
+  <base href="/">
+
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <meta name="author" content="Euan Goddard" />
+  <meta name="description" content="Interactive msuic game" />
+
+  <link href="//fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet" type="text/css">
+  <!-- inject:css -->
+  <!-- endinject -->
+</head>
+<body ng-app="game" ng-controller="AppController as app">
+  <ng-view></ng-view>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <!-- inject:js -->
+  <!-- endinject -->
+</body>
+</html>

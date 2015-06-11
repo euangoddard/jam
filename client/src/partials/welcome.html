@@ -1,0 +1,9 @@
+<h1>Welcome</h1>
+
+<button ng-click="app.start_new_game()" type="button">Start new game</button>
+
+<form name="join_form">
+  Join an existing game
+  <input type="text" placeholder="Game ID" ng-model="welcome_controller.game" required />
+  <button type="submit" ng-disabled="join_form.$invalid">Join game</button>
+</form>

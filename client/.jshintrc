@@ -1,0 +1,11 @@
+{
+  "browser": true,
+  "curly": true,
+  "eqeqeq": true,
+  "forin": true,
+  "laxbreak": true,
+  "predef": ["angular", "require"],
+  "quotmark": "single",
+  "undef": true,
+  "unused": true
+}
