@@ -63,6 +63,12 @@ gulp.task('copy-partials', function () {
 });
 
 
+gulp.task('copy-images', function () {
+  gulp.src('./src/img/**/*')
+    .pipe(gulp.dest('./dist/img'));
+});
+
+
 gulp.task('build-html', ['build-js', 'sass'], function () {
   var target = gulp.src('./src/index.html');
   var sources = gulp.src([
@@ -82,7 +88,7 @@ gulp.task('lint', function() {
 });
 
 
-gulp.task('build', ['build-html', 'copy-partials']);
+gulp.task('build', ['build-html', 'copy-partials', 'copy-images']);
 
 
 gulp.task('watch', ['build', 'lint'], function () {
