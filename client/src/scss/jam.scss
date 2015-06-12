@@ -1,3 +1,7 @@
+@import "_pure/base";
+@import "_pure/buttons";
+@import "_pure/forms";
+
 @import "welcome";
 
 body {
@@ -8,12 +12,13 @@ body {
     background-repeat: no-repeat;
     margin: 0;
     padding: 0;
-    color: #fff;
-    font-size: 16px;
+    font-size: 18px;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h4, h5, h6, p {
 	text-shadow: 1px 1px 4px rgba(0,0,0,0.3); 
+    color: #fff;
+    font-weight: 400;
 }
 h1 {
 	font-size: 3rem;
@@ -41,4 +46,16 @@ ng-view {
 	flex-direction: column;
 	align-items: center;
 	justify-content: space-around;
+}
+
+.split-container {
+	display: flex;
+	flex-direction: row;
+
+	>* {
+		width: 50%;
+		display: flex;
+		align-items: center;
+		justify-content: space-around;
+	}
 }

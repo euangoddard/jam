@@ -1,11 +1,35 @@
 <div class="welcome">
   <h1>Welcome</h1>
 
-  <button ng-click="app.start_new_game()" type="button">Start new game</button>
+  <div class="split-container">
+    <div>
+      <button
+      	ng-click="app.start_new_game()"
+      	type="button"
+        class="pure-button"
+      >
+        Start new game
+      </button>
+    </div>
 
-  <form name="join_form">
-    Join an existing game
-    <input type="text" placeholder="Game ID" ng-model="welcome_controller.game" required />
-    <button type="submit" ng-disabled="join_form.$invalid">Join game</button>
-  </form>
+    <form name="join_form" class="pure-form">
+      <fieldset>
+        <input
+          type="text"
+          placeholder="Game ID"
+          ng-model="welcome_controller.game"
+          class="pure-input-1-3"
+          required
+        />
+        <button
+          type="submit" 
+          ng-disabled="join_form.$invalid"
+          class="pure-button"
+        >
+          Join game
+        </button>
+      </fieldset>
+    </form>
+  </div>
+
 </div>
