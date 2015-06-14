@@ -4,8 +4,12 @@
 	padding: 2rem;
 	background: rgba(50, 50, 50, 0.6);
 
-	button {
-		border-radius: 0;
-		border: 1px solid white;
+	h1 {
+		img {
+			width: 3rem;
+			height: 3rem;
+			vertical-align: -0.5rem;
+		}
+
 	}
 }

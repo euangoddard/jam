@@ -31,7 +31,7 @@ gulp.task('clean', function () {
 gulp.task('build-js', function () {
   var b = browserify({
     entries: ['./src/js/main.js'],
-    debug: true
+    debug: false
   });
   return b.bundle()
     .on('error', gutil.log.bind(gutil, 'Browserify Error'))

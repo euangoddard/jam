@@ -1,1 +1,16 @@
 <h1>Game {{ game_controller.game }}</h1>
+
+<p ng-if="!game_controller.connected">Connecting...</p>
+
+<div class="users">
+  <div
+    class="user"
+    ng-repeat="participant in game_controller.participants"
+  >
+    <avatar name="participant"></avatar>
+    <div class="user-data">
+      {{ participant }}
+    </div>
+  </div>
+
+</div>

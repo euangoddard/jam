@@ -3,6 +3,7 @@
 @import "_pure/forms";
 
 @import "welcome";
+@import "game";
 
 body {
 	font-family: 'Roboto', sans-serif;
@@ -13,6 +14,9 @@ body {
     margin: 0;
     padding: 0;
     font-size: 18px;
+}
+input, select, textarea {
+	font-family: 'Roboto', sans-serif;
 }
 
 h1, h2, h3, h4, h5, h6, p {
@@ -43,19 +47,7 @@ ng-view {
 	width: 100vw;
 	height: 100vh;
 	display: flex;
-	flex-direction: column;
+	flex-direction: row;
 	align-items: center;
 	justify-content: space-around;
-}
-
-.split-container {
-	display: flex;
-	flex-direction: row;
-
-	>* {
-		width: 50%;
-		display: flex;
-		align-items: center;
-		justify-content: space-around;
-	}
 }
