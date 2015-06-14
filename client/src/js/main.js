@@ -111,7 +111,7 @@
           scope.avatar_url = pattern.png();
         });
       },
-      template: '<img src="{{ avatar_url }}" alt="Avatar for {{ name }}" />'
+      template: '<img ng-src="{{ avatar_url }}" alt="Avatar for {{ name }}" />'
     };
     return directive;
   });
