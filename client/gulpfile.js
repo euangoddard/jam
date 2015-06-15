@@ -37,8 +37,8 @@ gulp.task('build-js', function () {
     .on('error', gutil.log.bind(gutil, 'Browserify Error'))
     .pipe(source('bundle.js'))
     .pipe(buffer())
-    .pipe(gulpif(CONFIG.is_release, uglify()))
     .pipe(ngAnnotate())
+    .pipe(gulpif(CONFIG.is_release, uglify()))
     .pipe(gulp.dest('./dist/js'));
 });
 
