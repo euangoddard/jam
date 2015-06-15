@@ -1,8 +1,18 @@
-<h1>Game {{ game_controller.game }}</h1>
-
-<p ng-if="!game_controller.connected">Connecting...</p>
+<div class="main">
+  <h1>Game {{ game_controller.game }}</h1>
+  <div class="controls">
+    <div
+      class="instrument"
+      ng-repeat="instrument in game_controller.instruments"
+      ng-click="game_controller.play_instrument(instrument)"
+    >
+      {{ instrument }}
+    </div>
+  </div>
+</div>
 
 <div class="users">
+  <p ng-if="!game_controller.connected">Connecting...</p>
   <div
     class="user"
     ng-repeat="participant in game_controller.participants"

@@ -24,11 +24,10 @@ io.on('connection', function (socket) {
   var addedUser = false;
 
   // when the client emits 'new message', this listens and executes
-  socket.on('new message', function (data) {
-    // we tell the client to execute 'new message'
-    socket.broadcast.emit('new message', {
+  socket.on('play-instrument', function (data) {
+    socket.broadcast.emit('play-instrument', {
       username: socket.username,
-      message: data
+      instrument: data.instrument
     });
   });
 
@@ -36,7 +35,6 @@ io.on('connection', function (socket) {
   socket.on('add-user', function (username) {
     // we store the username in the socket session for this client
     socket.username = username;
-    console.log('User connected', username);
     // add the client's username to the global list
     usernames[username] = username;
     ++numUsers;

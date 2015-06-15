@@ -56,15 +56,25 @@
     }
 
     var ctrl = this;
+    ctrl.instruments = 'ABCDEFGHIJKL'.split('');
     ctrl.connected = false;
     ctrl.participants = [];
 
     ctrl.game = $routeParams.game;
+
+    // Operations broadcasted to other peers
     socket.emit('add-user', $scope.app.name);
 
+    ctrl.play_instrument = function (instrument) {
+      socket.emit('play-instrument', {
+        instrument: instrument
+      });
+    };
+
+
+    // Operations originating from other peers
     socket.on('login', function (data) {
       ctrl.connected = true;
-      // Display the welcome message
       ctrl.show_participants(Object.keys(data.usernames));
     });
 
@@ -74,6 +84,10 @@
 
     socket.on('user-left', function (data) {
       ctrl.remove_participant(data.username);
+    });
+
+    socket.on('play-instrument', function (data) {
+      console.log(data);
     });
 
     ctrl.show_participants = function (usernames) {
