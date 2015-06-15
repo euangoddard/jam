@@ -10,7 +10,7 @@
     require('./sound-manager')
     ]
   );
-  game.config(function($locationProvider, $routeProvider) {
+  game.config(function($locationProvider, $routeProvider, SoundManagerProvider) {
     $locationProvider.html5Mode(true);
     $routeProvider.when('/g/:game/', {
       controller: 'GameController',
@@ -29,6 +29,8 @@
     }).otherwise({
       redirectTo: '/'
     });
+
+    SoundManagerProvider.set_sounds_root('/sounds/');
   });
 
 
@@ -51,7 +53,7 @@
 
   });
 
-  game.controller('GameController', function ($scope, $location, $routeParams, socket) {
+  game.controller('GameController', function ($scope, $location, $routeParams, socket, SoundManager) {
     if (!$scope.app.name) {
       $location.path('/g/' + $routeParams.game + '/welcome/');
       return;
@@ -68,6 +70,9 @@
     socket.emit('add-user', $scope.app.name);
 
     ctrl.play_instrument = function (instrument) {
+      SoundManager.add_sounds(['tom']).then(function () {
+        SoundManager.play('tom');
+      });
       socket.emit('play-instrument', {
         instrument: instrument
       });

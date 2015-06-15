@@ -63,6 +63,12 @@ gulp.task('copy-partials', function () {
 });
 
 
+gulp.task('copy-sounds', function () {
+  gulp.src('./src/sounds/**/*.{m4a,ogg}')
+    .pipe(gulp.dest('./dist/sounds'));
+});
+
+
 gulp.task('copy-images', function () {
   gulp.src('./src/img/**/*')
     .pipe(gulp.dest('./dist/img'));
@@ -88,7 +94,7 @@ gulp.task('lint', function() {
 });
 
 
-gulp.task('build', ['build-html', 'copy-partials', 'copy-images']);
+gulp.task('build', ['build-html', 'copy-partials', 'copy-images', 'copy-sounds']);
 
 
 gulp.task('watch', ['build', 'lint'], function () {
