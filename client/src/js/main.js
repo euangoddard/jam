@@ -1,11 +1,13 @@
 (function () {
+  'use strict';
   var angular = require('angular');
   var base62 = require('base62');
   var Trianglify = require('./trianglify');
 
   var game = angular.module('game', [
     require('angular-socket-io'),
-    require('angular-route')
+    require('angular-route'),
+    require('./sound-manager')
     ]
   );
   game.config(function($locationProvider, $routeProvider) {
@@ -101,7 +103,7 @@
     ctrl.remove_participant = function (username) {
       var index = ctrl.participants.indexOf(username);
       if (index !== -1) {
-        ctrl.participants.splice(index, 1);  
+        ctrl.participants.splice(index, 1);
       }
     };
   });
@@ -117,11 +119,11 @@
           var now = new Date();
           var seed = name ? name : now.valueOf();
           var pattern = Trianglify({
-              width: 60, 
+              width: 60,
               height: 60,
               cell_size: 20,
               seed: seed
-          });  
+          });
           scope.avatar_url = pattern.png();
         });
       },
