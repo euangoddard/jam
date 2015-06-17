@@ -60,56 +60,64 @@
     }
 
     var ctrl = this;
-    ctrl.instruments = 'ABCDEFGHIJKL'.split('');
+    ctrl.instruments = [
+      'clap',
+      'crash',
+      'fm',
+      'hihat',
+      'kick',
+      'laser',
+      'openhat',
+      'perc',
+      'shaker',
+      'snare',
+      'tom'
+    ];
     ctrl.connected = false;
     ctrl.participants = [];
 
     ctrl.game = $routeParams.game;
 
     // Operations broadcasted to other peers
-    socket.emit('add-user', $scope.app.name);
+    socket.emit('join-game', {username: $scope.app.name, game: $routeParams.game});
 
     ctrl.play_instrument = function (instrument) {
-      SoundManager.add_sounds(['tom']).then(function () {
-        SoundManager.play('tom');
+      SoundManager.add_sounds(ctrl.instruments).then(function () {
+        SoundManager.play(instrument);
       });
       socket.emit('play-instrument', {
         instrument: instrument
       });
     };
 
-
     // Operations originating from other peers
-    socket.on('login', function (data) {
+    socket.on('game-joined', function (users) {
       ctrl.connected = true;
-      ctrl.show_participants(Object.keys(data.usernames));
+      ctrl.show_participants(users);
     });
 
-    socket.on('user-joined', function (data) {
-      ctrl.add_participant(data.username);
+    socket.on('user-joined', function (user) {
+      ctrl.add_participant(user);
     });
 
-    socket.on('user-left', function (data) {
-      ctrl.remove_participant(data.username);
+    socket.on('user-left', function (user) {
+      ctrl.remove_participant(user);
     });
 
     socket.on('play-instrument', function (data) {
       console.log(data);
     });
 
-    ctrl.show_participants = function (usernames) {
-      ctrl.participants = usernames;
+    ctrl.show_participants = function (users) {
+      ctrl.participants = users;
     };
 
-    ctrl.add_participant = function (username) {
-      ctrl.participants.push(username);
+    ctrl.add_participant = function (user) {
+      ctrl.participants[user.id] = user.username;
     };
 
-    ctrl.remove_participant = function (username) {
-      var index = ctrl.participants.indexOf(username);
-      if (index !== -1) {
-        ctrl.participants.splice(index, 1);
-      }
+    ctrl.remove_participant = function (user) {
+      delete ctrl.participants[user.id];
     };
   });
 

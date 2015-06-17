@@ -15,7 +15,7 @@
   <p ng-if="!game_controller.connected">Connecting...</p>
   <div
     class="user"
-    ng-repeat="participant in game_controller.participants"
+    ng-repeat="(participant_id, participant) in game_controller.participants"
   >
     <avatar name="participant"></avatar>
     <div class="user-data">
