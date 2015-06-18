@@ -20,13 +20,6 @@ var USER_COUNTER = 0;
 
 io.on('connection', function (socket) {
 
-  socket.on('play-instrument', function (data) {
-    socket.broadcast.emit('play-instrument', {
-      username: socket.user_id,
-      instrument: data.instrument
-    });
-  });
-
   socket.on('join-game', function (data) {
     var username = data.username;
     var user_id = ++USER_COUNTER;
@@ -46,6 +39,13 @@ io.on('connection', function (socket) {
     socket.broadcast.emit('user-joined', {
       id: user_id,
       username: username
+    });
+  });
+
+  socket.on('play-instrument', function (data) {
+    socket.broadcast.emit('play-instrument', {
+      user_id: socket.user_id,
+      instrument: data.instrument
     });
   });
 

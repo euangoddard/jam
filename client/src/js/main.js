@@ -81,10 +81,16 @@
     // Operations broadcasted to other peers
     socket.emit('join-game', {username: $scope.app.name, game: $routeParams.game});
 
-    ctrl.play_instrument = function (instrument) {
-      SoundManager.add_sounds(ctrl.instruments).then(function () {
+    var sounds = SoundManager.add_sounds(ctrl.instruments);
+
+    var play_sound = function (instrument) {
+      sounds.then(function () {
         SoundManager.play(instrument);
       });
+    };
+
+    ctrl.play_instrument = function (instrument) {
+      play_sound(instrument);
       socket.emit('play-instrument', {
         instrument: instrument
       });
@@ -106,6 +112,7 @@
 
     socket.on('play-instrument', function (data) {
       console.log(data);
+      play_sound(data.instrument);
     });
 
     ctrl.show_participants = function (users) {
