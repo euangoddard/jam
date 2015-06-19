@@ -34,16 +34,15 @@ io.on('connection', function (socket) {
 
     socket.join(game);
     socket.emit('game-joined', game_users);
-    socket.to(game);
 
-    socket.broadcast.emit('user-joined', {
+    socket.to(game).broadcast.emit('user-joined', {
       id: user_id,
       username: username
     });
   });
 
   socket.on('play-instrument', function (data) {
-    socket.broadcast.emit('play-instrument', {
+    socket.to(socket.game).broadcast.emit('play-instrument', {
       user_id: socket.user_id,
       instrument: data.instrument
     });
@@ -57,7 +56,7 @@ io.on('connection', function (socket) {
         delete USERS_BY_GAME[socket.game];
       }
 
-      socket.broadcast.emit('user-left', {
+      socket.to(socket.game).broadcast.emit('user-left', {
         id: socket.user_id
       });
     }
