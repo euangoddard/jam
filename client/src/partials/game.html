@@ -5,8 +5,9 @@
       class="instrument"
       ng-repeat="instrument in game_controller.instruments"
       ng-click="game_controller.play_instrument(instrument)"
+      key-trigger="$index | key_trigger"
+      key-trigger-target="game_controller.play_instrument(instrument)"
     >
-      {{ instrument }}
     </div>
   </div>
 </div>

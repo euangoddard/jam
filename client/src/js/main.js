@@ -7,7 +7,8 @@
   var game = angular.module('game', [
     require('angular-socket-io'),
     require('angular-route'),
-    require('./sound-manager')
+    require('./sound-manager'),
+    require('./keyboard')
     ]
   );
   game.config(function($locationProvider, $routeProvider, SoundManagerProvider) {
@@ -150,6 +151,13 @@
       template: '<img ng-src="{{ avatar_url }}" alt="Avatar for {{ name }}" />'
     };
     return directive;
+  });
+
+  game.filter('key_trigger', function () {
+    var letters = 'qwertyuiopasdfghjklzxcvbnm'.split('');
+    return function (index) {
+      return letters[index];
+    };
   });
 
 }());

@@ -1,5 +1,6 @@
 $instrument-size-landscape: 10vw;
 $instrument-size-portrait: 10vh;
+$instrument-font-size-factor: 0.7;
 
 .main {
 	flex: 2 0 0;
@@ -18,6 +19,10 @@ $instrument-size-portrait: 10vh;
 			margin: 0 0 1rem 1rem;
 			background: rgba(255, 255, 255, 0.8);
             cursor: pointer;
+            font-size: $instrument-size-landscape * $instrument-font-size-factor;
+            line-height: $instrument-size-landscape;
+            text-align: center;
+            color: #666;
 		}
 	}
 }
@@ -47,6 +52,8 @@ $instrument-size-portrait: 10vh;
     .main .controls .instrument {
         width: $instrument-size-portrait;
         height: $instrument-size-portrait;
+        font-size: $instrument-size-portrait * $instrument-font-size-factor;
+        line-height: $instrument-size-portrait;
     }
 
     .users {
