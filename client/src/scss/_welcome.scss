@@ -13,3 +13,18 @@
 
 	}
 }
+
+@media (max-width: 768px) {
+	h1 {
+		text-align: center;
+	}
+
+	.welcome {
+		width: 90vw;
+
+
+		input, button {
+			width: 100%;
+		}
+	}
+}

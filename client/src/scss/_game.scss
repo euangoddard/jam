@@ -1,19 +1,20 @@
-$instrument-size: 7vw;
+$instrument-size-landscape: 10vw;
+$instrument-size-portrait: 10vh;
 
 .main {
 	flex: 2 0 0;
-	//width: $main-width;
-
 
 	.controls {
 		display: flex;
 		flex-direction: row;
 		flex-wrap: wrap;
         user-select: none;
+        justify-content: center;
 
 		.instrument {
-			width: $instrument-size;
-			height: $instrument-size;
+			width: $instrument-size-landscape;
+			height: $instrument-size-landscape;
+            border-radius: 4px;
 			margin: 0 0 1rem 1rem;
 			background: rgba(255, 255, 255, 0.8);
             cursor: pointer;
@@ -21,10 +22,8 @@ $instrument-size: 7vw;
 	}
 }
 
-
 .users {
 	flex: 1 0 0;
-	//width: $users-width;
 	box-sizing: border-box;
 	padding-left: 5vw;
 
@@ -39,3 +38,27 @@ $instrument-size: 7vw;
 		}
 	}
 }
+
+@media (orientation: portrait) {
+    ng-view {
+        flex-direction: column;
+    }
+
+    .main .controls .instrument {
+        width: $instrument-size-portrait;
+        height: $instrument-size-portrait;
+    }
+
+    .users {
+        padding-left: 0;
+
+        .user {
+            img {
+                width: 30px;
+                height: 30px;
+            }
+        }
+    }
+
+}
+

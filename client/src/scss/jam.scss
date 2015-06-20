@@ -2,8 +2,6 @@
 @import "_pure/buttons";
 @import "_pure/forms";
 
-@import "welcome";
-@import "game";
 
 body {
 	font-family: 'Roboto', sans-serif;
@@ -20,7 +18,7 @@ input, select, textarea {
 }
 
 h1, h2, h3, h4, h5, h6, p {
-	text-shadow: 1px 1px 4px rgba(0,0,0,0.3); 
+	text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
     color: #fff;
     font-weight: 400;
 }
@@ -51,3 +49,6 @@ ng-view {
 	align-items: center;
 	justify-content: space-around;
 }
+
+@import "welcome";
+@import "game";
