@@ -4,8 +4,9 @@
   "eqeqeq": true,
   "forin": true,
   "laxbreak": true,
-  "predef": ["angular", "require", "module"],
+  "predef": ["require", "module", "exports"],
   "quotmark": "single",
   "undef": true,
-  "unused": true
+  "unused": true,
+  "globalstrict": true
 }

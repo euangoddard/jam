@@ -88,7 +88,7 @@ gulp.task('build-html', ['build-js', 'sass'], function () {
 
 
 gulp.task('lint', function() {
-  return gulp.src('./src/**/*.js')
+  return gulp.src(['./src/**/*.js', '../server.js'])
     .pipe(jshint())
     .pipe(jshint.reporter(stylish));
 });
