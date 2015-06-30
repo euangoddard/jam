@@ -8,14 +8,14 @@ module.exports = MODULE_NAME;
 
 
 keyboard.factory('WindowKeyListener', function ($window, $rootScope) {
-  var EVNET_NAME = 'window:keypress';
+  var EVENT_NAME = 'window:keypress';
 
   angular.element($window).on('keypress', function (event) {
     $rootScope.$broadcast('window:keypress', [event.which]);
   });
 
   return {
-    EVNET_NAME: EVNET_NAME
+    EVENT_NAME: EVENT_NAME
   };
 });
 
@@ -123,9 +123,9 @@ keyboard.directive('keyTrigger', function (WindowKeyListener, KEY_CODES) {
       var key_code_trigger = KEY_CODES[key];
 
       var target = attrs.keyTriggerTarget;
-      element.text(key);
+      element.append('<span>' + key + '</span>');
 
-      scope.$on(WindowKeyListener.EVNET_NAME, function (event, args) {
+      scope.$on(WindowKeyListener.EVENT_NAME, function (event, args) {
         var key_code = args[0];
         if (key_code === key_code_trigger) {
           scope.$eval(target);

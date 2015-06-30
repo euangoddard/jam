@@ -23,6 +23,22 @@ $instrument-font-size-factor: 0.7;
             line-height: $instrument-size-landscape;
             text-align: center;
             color: #666;
+            position: relative;
+
+            span, canvas {
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+            }
+
+            span {
+                z-index: 1;
+            }
+            canvas {
+                z-index: 2;
+            }
 		}
 	}
 }
