@@ -69,7 +69,6 @@ game.controller('GameController', function ($scope, $location, $routeParams, soc
     'kick',
     'laser',
     'openhat',
-    'perc',
     'shaker',
     'snare',
     'tom'
